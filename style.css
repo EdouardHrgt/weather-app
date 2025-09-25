@@ -1,0 +1,179 @@
+/* === Base CSS Template === */
+:root {
+  /* Neutral */
+  --neutral-900: #02012C;
+  --neutral-800: #262540;
+  --neutral-700: #302F4A;
+  --neutral-600: #3C3B5E;
+  --neutral-300: #ACACB7;
+  --neutral-200: #D4D3D9;
+  --neutral-0: #FFFFFF;
+
+  /* Orange */
+  --orange-500: #FF820A;
+
+  /* Blue */
+  --blue-500: #465BD9;
+  --blue-700: #2B189C;
+
+  --font-dm: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-bricolage: "Bricolage Grotesque", "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-white);
+  transition: 0.4s ease-in-out;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+button {
+  display: block;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* FONT */
+/* ---------- IMPORTS (exemple) ----------
+   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;500;600;700&display=swap');
+   /* Si Bricolage Grotesque n'est pas dispo via Google Fonts, héberge-la ou remplace par une alternative */
+*/
+
+/* Variables utiles (optionnel) */
+:root{
+  --font-dm: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-bricolage: "Bricolage Grotesque", "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Text Preset 1
+   DM Sans, SemiBold Italic
+   Font-size: 96px | Line-height: 100% | Letter-spacing: -2px
+*/
+.tp-1{
+  font-family: var(--font-dm);
+  font-weight: 600;            /* SemiBold */
+  font-style: italic;
+  font-size: 96px;
+  line-height: 1;              /* 100% */
+  letter-spacing: -2px;
+  margin: 0;                   /* selon besoin */
+}
+
+/* Text Preset 2
+   Bricolage Grotesque, Bold
+   Font-size: 52px | Line-height: 120% | Letter-spacing: 0
+*/
+.tp-2{
+  font-family: var(--font-bricolage);
+  font-weight: 700;            /* Bold */
+  font-style: normal;
+  font-size: 52px;
+  line-height: 1.2;            /* 120% */
+  letter-spacing: 0;
+  margin: 0;
+}
+
+/* Text Preset 3
+   DM Sans, Light
+   Font-size: 32px | Line-height: 100%
+*/
+.tp-3{
+  font-family: var(--font-dm);
+  font-weight: 300;            /* Light */
+  font-style: normal;
+  font-size: 32px;
+  line-height: 1;              /* 100% */
+  letter-spacing: 0;
+  margin: 0;
+}
+
+/* Text Preset 4
+   DM Sans, Bold
+   Font-size: 28px | Line-height: 120%
+*/
+.tp-4{
+  font-family: var(--font-dm);
+  font-weight: 700;            /* Bold */
+  font-style: normal;
+  font-size: 28px;
+  line-height: 1.2;            /* 120% */
+  letter-spacing: 0;
+  margin: 0;
+}
+
+/* Text Preset 5
+   DM Sans, SemiBold
+   Font-size: 20px | Line-height: 120%
+*/
+.tp-5{
+  font-family: var(--font-dm);
+  font-weight: 600;            /* SemiBold */
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.2;            /* 120% */
+  letter-spacing: 0;
+  margin: 0;
+}
+
+/* Text Preset 6
+   DM Sans, Medium
+   Font-size: 18px | Line-height: 120%
+*/
+.tp-6{
+  font-family: var(--font-dm);
+  font-weight: 500;            /* Medium */
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+/* Text Preset 7
+   DM Sans, Medium
+   Font-size: 16px | Line-height: 120%
+*/
+.tp-7{
+  font-family: var(--font-dm);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+/* Text Preset 8
+   DM Sans, Medium
+   Font-size: 14px | Line-height: 120%
+*/
+.tp-8{
+  font-family: var(--font-dm);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  margin: 0;
+}
