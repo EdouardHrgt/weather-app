@@ -1,23 +1,25 @@
 /* === Base CSS Template === */
 :root {
   /* Neutral */
-  --neutral-900: #02012C;
+  --neutral-900: #02012c;
   --neutral-800: #262540;
-  --neutral-700: #302F4A;
-  --neutral-600: #3C3B5E;
-  --neutral-300: #ACACB7;
-  --neutral-200: #D4D3D9;
-  --neutral-0: #FFFFFF;
+  --neutral-700: #302f4a;
+  --neutral-600: #3c3b5e;
+  --neutral-300: #acacb7;
+  --neutral-200: #d4d3d9;
+  --neutral-0: #ffffff;
 
   /* Orange */
-  --orange-500: #FF820A;
+  --orange-500: #ff820a;
 
   /* Blue */
-  --blue-500: #465BD9;
-  --blue-700: #2B189C;
+  --blue-500: #465bd9;
+  --blue-700: #2b189c;
 
-  --font-dm: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-bricolage: "Bricolage Grotesque", "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-dm: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-bricolage: "Bricolage Grotesque", "DM Sans", system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -54,95 +56,71 @@ button {
   cursor: pointer;
 }
 
-/* FONT */
-/* ---------- IMPORTS (exemple) ----------
-   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;500;600;700&display=swap');
-   /* Si Bricolage Grotesque n'est pas dispo via Google Fonts, héberge-la ou remplace par une alternative */
-*/
-
-/* Variables utiles (optionnel) */
-:root{
-  --font-dm: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-bricolage: "Bricolage Grotesque", "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* Text Preset 1
-   DM Sans, SemiBold Italic
-   Font-size: 96px | Line-height: 100% | Letter-spacing: -2px
-*/
-.tp-1{
+.tp-1 {
   font-family: var(--font-dm);
-  font-weight: 600;            /* SemiBold */
+  font-weight: 600;
+  /* SemiBold */
   font-style: italic;
   font-size: 96px;
-  line-height: 1;              /* 100% */
+  line-height: 1;
+  /* 100% */
   letter-spacing: -2px;
-  margin: 0;                   /* selon besoin */
+  margin: 0;
+  /* selon besoin */
 }
 
-/* Text Preset 2
-   Bricolage Grotesque, Bold
-   Font-size: 52px | Line-height: 120% | Letter-spacing: 0
-*/
-.tp-2{
+.tp-2 {
   font-family: var(--font-bricolage);
-  font-weight: 700;            /* Bold */
+  font-weight: 700;
+  /* Bold */
   font-style: normal;
   font-size: 52px;
-  line-height: 1.2;            /* 120% */
+  line-height: 1.2;
+  /* 120% */
   letter-spacing: 0;
   margin: 0;
 }
 
-/* Text Preset 3
-   DM Sans, Light
-   Font-size: 32px | Line-height: 100%
-*/
-.tp-3{
+.tp-3 {
   font-family: var(--font-dm);
-  font-weight: 300;            /* Light */
+  font-weight: 300;
+  /* Light */
   font-style: normal;
   font-size: 32px;
-  line-height: 1;              /* 100% */
+  line-height: 1;
+  /* 100% */
   letter-spacing: 0;
   margin: 0;
 }
 
-/* Text Preset 4
-   DM Sans, Bold
-   Font-size: 28px | Line-height: 120%
-*/
-.tp-4{
+.tp-4 {
   font-family: var(--font-dm);
-  font-weight: 700;            /* Bold */
+  font-weight: 700;
+  /* Bold */
   font-style: normal;
   font-size: 28px;
-  line-height: 1.2;            /* 120% */
+  line-height: 1.2;
+  /* 120% */
   letter-spacing: 0;
   margin: 0;
 }
 
-/* Text Preset 5
-   DM Sans, SemiBold
-   Font-size: 20px | Line-height: 120%
-*/
-.tp-5{
+.tp-5 {
   font-family: var(--font-dm);
-  font-weight: 600;            /* SemiBold */
+  font-weight: 600;
+  /* SemiBold */
   font-style: normal;
   font-size: 20px;
-  line-height: 1.2;            /* 120% */
+  line-height: 1.2;
+  /* 120% */
   letter-spacing: 0;
   margin: 0;
 }
 
-/* Text Preset 6
-   DM Sans, Medium
-   Font-size: 18px | Line-height: 120%
-*/
-.tp-6{
+.tp-6 {
   font-family: var(--font-dm);
-  font-weight: 500;            /* Medium */
+  font-weight: 500;
+  /* Medium */
   font-style: normal;
   font-size: 18px;
   line-height: 1.2;
@@ -150,11 +128,7 @@ button {
   margin: 0;
 }
 
-/* Text Preset 7
-   DM Sans, Medium
-   Font-size: 16px | Line-height: 120%
-*/
-.tp-7{
+.tp-7 {
   font-family: var(--font-dm);
   font-weight: 500;
   font-style: normal;
@@ -164,11 +138,7 @@ button {
   margin: 0;
 }
 
-/* Text Preset 8
-   DM Sans, Medium
-   Font-size: 14px | Line-height: 120%
-*/
-.tp-8{
+.tp-8 {
   font-family: var(--font-dm);
   font-weight: 500;
   font-style: normal;
@@ -176,4 +146,125 @@ button {
   line-height: 1.2;
   letter-spacing: 0;
   margin: 0;
+}
+
+body {
+  background-color: var(--neutral-900);
+  color: var(--neutral-0);
+  padding: 3rem 4rem 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header,
+h1 {
+  margin-bottom: 64px;
+}
+
+h1 {
+  font-family: var(--font-bricolage);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 52px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.units {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  background-color: var(--neutral-800);
+  padding: 12px 0.8rem;
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+}
+
+#myForm {
+  margin-inline: auto;
+  margin-bottom: 48px;
+  max-width: 656px;
+  display: flex;
+  gap: 1rem;
+}
+
+input[type="text"] {
+  padding: 16px 8px 16px 50px;
+  color: var(--neutral-200);
+  border-radius: 12px;
+  border: none;
+  background: url("./assets/images/icon-search.svg");
+  background-repeat: no-repeat;
+  background-position: left 1rem center;
+  background-color: var(--neutral-800);
+  width: 100%;
+}
+
+input[type="text"]::placeholder,
+input[type="text"],
+input[type="submit"] {
+  color: var(--neutral-200);
+  font-family: var(--font-dm);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+input[type="submit"] {
+  background-color: var(--blue-500);
+  border-radius: 12px;
+  border: none;
+  padding: 16px 24px;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 32px;
+  justify-content: center;
+}
+
+.left-col {
+  border: 1px solid red;
+  width: 800px;
+}
+
+.right-col {
+  border: 1px solid limegreen;
+  width: 384px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 1024px) {
+  body {
+    padding: 2rem 1rem;
+  }
+
+  #myForm {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 800px) {
+  header,
+  h1 {
+    margin-bottom: 48px;
+  }
+
+  #myForm {
+    max-width: 100%;
+    flex-direction: column;
+  }
 }
