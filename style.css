@@ -59,73 +59,55 @@ button {
 .tp-1 {
   font-family: var(--font-dm);
   font-weight: 600;
-  /* SemiBold */
   font-style: italic;
   font-size: 96px;
   line-height: 1;
-  /* 100% */
   letter-spacing: -2px;
-  margin: 0;
-  /* selon besoin */
 }
 
 .tp-2 {
   font-family: var(--font-bricolage);
   font-weight: 700;
-  /* Bold */
   font-style: normal;
   font-size: 52px;
   line-height: 1.2;
-  /* 120% */
   letter-spacing: 0;
-  margin: 0;
 }
 
 .tp-3 {
   font-family: var(--font-dm);
   font-weight: 300;
-  /* Light */
   font-style: normal;
   font-size: 32px;
   line-height: 1;
-  /* 100% */
   letter-spacing: 0;
-  margin: 0;
 }
 
 .tp-4 {
   font-family: var(--font-dm);
   font-weight: 700;
-  /* Bold */
   font-style: normal;
   font-size: 28px;
   line-height: 1.2;
-  /* 120% */
   letter-spacing: 0;
-  margin: 0;
 }
 
 .tp-5 {
   font-family: var(--font-dm);
   font-weight: 600;
-  /* SemiBold */
   font-style: normal;
   font-size: 20px;
   line-height: 1.2;
-  /* 120% */
   letter-spacing: 0;
-  margin: 0;
 }
 
 .tp-6 {
   font-family: var(--font-dm);
   font-weight: 500;
-  /* Medium */
   font-style: normal;
   font-size: 18px;
   line-height: 1.2;
   letter-spacing: 0;
-  margin: 0;
 }
 
 .tp-7 {
@@ -135,7 +117,6 @@ button {
   font-size: 16px;
   line-height: 1.2;
   letter-spacing: 0;
-  margin: 0;
 }
 
 .tp-8 {
@@ -145,7 +126,6 @@ button {
   font-size: 14px;
   line-height: 1.2;
   letter-spacing: 0;
-  margin: 0;
 }
 
 body {
@@ -226,6 +206,7 @@ input[type="submit"] {
   border: none;
   padding: 16px 24px;
   cursor: pointer;
+  color: var(--neutral-0);
 }
 
 .grid {
@@ -245,7 +226,94 @@ input[type="submit"] {
   width: 384px;
 }
 
+/* ===== LEFT COLUMN ===== */
+
+.town {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 286px;
+  border-radius: 12px;
+  padding: 0 1.2rem;
+  background: url("./assets/images/bg-today-large.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 32px;
+}
+
+.temperature {
+  display: flex;
+  align-items: center;
+}
+
+.temperature img {
+  width: 120px;
+  height: 120px;
+}
+
+.date,
+.metrix h3 {
+  color: var(--neutral-200);
+  margin-bottom: .7rem;
+}
+
+.metrix-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 42px;
+}
+
+.metrix {
+  border-radius: 12px;
+  background-color: var(--neutral-800);
+  width: 100%;
+  padding: 15px 1.2rem;
+}
+
+.daily-title {
+  color: var(--neutral-0);
+  margin-bottom: 15px;
+}
+
+.days,
+.min-max-temperatures
+ {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.day {
+  background-color: var(--neutral-800);
+  border-radius: 12px;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.day img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.min-max-temperatures p {
+  color: var(--neutral-200);
+}
 /* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 1260px) {
+.left-col {
+  border: 1px solid rgb(31, 241, 196);
+  width: 100%;
+}
+
+.right-col {
+  border: 1px solid rgb(255, 43, 209);
+  width: 100%;
+}
+}
 
 @media (max-width: 1024px) {
   body {
