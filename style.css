@@ -217,12 +217,10 @@ input[type="submit"] {
 }
 
 .left-col {
-  border: 1px solid red;
   width: 800px;
 }
 
 .right-col {
-  border: 1px solid limegreen;
   width: 384px;
 }
 
@@ -249,12 +247,18 @@ input[type="submit"] {
 .temperature img {
   width: 120px;
   height: 120px;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.temperature img.fade-out {
+  opacity: 0;
 }
 
 .date,
 .metrix h3 {
   color: var(--neutral-200);
-  margin-bottom: .7rem;
+  margin-bottom: 0.7rem;
 }
 
 .metrix-wrapper {
@@ -270,6 +274,7 @@ input[type="submit"] {
   background-color: var(--neutral-800);
   width: 100%;
   padding: 15px 1.2rem;
+  height: 118px;
 }
 
 .daily-title {
@@ -278,8 +283,7 @@ input[type="submit"] {
 }
 
 .days,
-.min-max-temperatures
- {
+.min-max-temperatures {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -288,31 +292,92 @@ input[type="submit"] {
 .day {
   background-color: var(--neutral-800);
   border-radius: 12px;
-  padding: 15px 20px;
+  padding: 15px 7px;
   text-align: center;
+  height: 160px;
+  width: 100px;
 }
 
 .day img {
   width: 60px;
   height: 60px;
   margin-bottom: 15px;
+  margin-inline: auto;
 }
 
-.min-max-temperatures p {
+.min-temp {
   color: var(--neutral-200);
 }
+
+.max-temp {
+  color: var(--neutral-0);
+}
+
+/* ===== RIGHT COLUMN ===== */
+.right-col {
+  padding: 24px;
+  border-radius: 12px;
+  background-color: var(--neutral-800);
+}
+
+.hourly-title-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+#hourly-days {
+  background-color: var(--neutral-700);
+  color: var(--neutral-0);
+  border: none;
+  cursor: pointer;
+  height: 37px;
+  width: 120px;
+  padding: 0 0 0 15px;
+  position: relative;
+  border-radius: 7px;
+}
+
+.hourly {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 336px;
+  height: 60px;
+  border-radius: 7px;
+  background-color: var(--neutral-700);
+  padding-right: 15px;
+  margin-bottom: 16px;
+}
+
+.hourly >div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hourly img {
+  width: 40px;
+  height: 40px;
+}
+
+.hourly-text {
+  text-transform: uppercase;
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 
 @media (max-width: 1260px) {
-.left-col {
-  border: 1px solid rgb(31, 241, 196);
-  width: 100%;
-}
+  .left-col {
+    border: 1px solid rgb(31, 241, 196);
+    width: 100%;
+  }
 
-.right-col {
-  border: 1px solid rgb(255, 43, 209);
-  width: 100%;
-}
+  .right-col {
+    border: 1px solid rgb(255, 43, 209);
+    width: 100%;
+  }
 }
 
 @media (max-width: 1024px) {

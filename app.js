@@ -1,6 +1,6 @@
 document.getElementById('myForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-  
+
   const cityName = document.getElementById('search').value.trim();
   if (!cityName) {
     console.error("Veuillez entrer une ville.");
@@ -8,7 +8,7 @@ document.getElementById('myForm').addEventListener('submit', async (e) => {
   }
 
   try {
-    // 1️⃣ Géocodage : récupérer coordonnées
+    // 1️⃣ Géocodage
     const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1`;
     const geoRes = await fetch(geoUrl);
     const geoData = await geoRes.json();
@@ -19,61 +19,102 @@ document.getElementById('myForm').addEventListener('submit', async (e) => {
     }
 
     const { latitude, longitude, name, country } = geoData.results[0];
-    console.log(`Ville : ${name}, Pays : ${country}`);
-    console.log(`Coordonnées : lat=${latitude}, lon=${longitude}`);
 
-    // 2️⃣ Appel API météo
-    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m&daily=temperature_2m_min,temperature_2m_max&timezone=auto`;
+    // 2️⃣ Données météo
+    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation,weathercode&daily=temperature_2m_min,temperature_2m_max,weathercode&timezone=auto`;
     const weatherRes = await fetch(weatherUrl);
     const weatherData = await weatherRes.json();
 
-    // 3️⃣ Afficher la date actuelle
-    const today = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
-    console.log(`Aujourd’hui : ${today}`);
+    // 3️⃣ Météo actuelle
+    const current = weatherData.current;
 
-    // 4️⃣ Températures heure par heure (aujourd’hui)
-    const hours = weatherData.hourly.time;
-    const temps = weatherData.hourly.temperature_2m;
-    const todayDate = hours[0].split('T')[0];
-
-    const hourlyToday = hours
-      .map((time, i) => ({ time, temp: temps[i] }))
-      .filter(h => h.time.startsWith(todayDate));
-
-    console.log("Températures heure par heure aujourd’hui :");
-    console.table(hourlyToday);
-
-    // 5️⃣ Températures min / max sur la semaine
-    const dailyDates = weatherData.daily.time;
-    const dailyMin = weatherData.daily.temperature_2m_min;
-    const dailyMax = weatherData.daily.temperature_2m_max;
-
-    const weekly = dailyDates.map((date, i) => ({
-      date,
-      min: dailyMin[i],
-      max: dailyMax[i],
-    }));
-
-    console.log("Prévisions semaine (min / max) :");
-    console.table(weekly);
-
-    // HTML ELEMENTS
-    const town = document.querySelector('.town-name-date h4');
+    // 🎯 Sélecteurs DOM
+    const town = document.querySelector('.town-name');
     const date = document.querySelector('.date');
-    const temperature = document.querySelector('.temperature p');
+    const temperatureDiv = document.querySelector('.temperature'); 
+    const tempP = temperatureDiv.querySelector('p'); 
     const feelLike = document.querySelector('.feel-like');
     const humidity = document.querySelector('.humidity');
     const wind = document.querySelector('.wind');
     const precipitation = document.querySelector('.precipitation');
-    // WEEK DAYS
-    const tue = document.querySelector('.day.tue');
-    const wed = document.querySelector('.day.wed');
-    const thu = document.querySelector('.day.thu');
-    const fri = document.querySelector('.day.fri');
-    const sat = document.querySelector('.day.sat');
-    const sun = document.querySelector('.day.sun');
-    const mon = document.querySelector('.day.mon');
 
+    // 🧭 Fonction icônes
+    function getWeatherIcon(code) {
+      if ([0].includes(code)) return "icon-sunny.webp";
+      if ([1, 2].includes(code)) return "icon-partly-cloudy.webp";
+      if ([3].includes(code)) return "icon-overcast.webp";
+      if ([45, 48].includes(code)) return "icon-fog.webp";
+      if ([51, 53, 55].includes(code)) return "icon-drizzle.webp";
+      if ([61, 63, 65, 80, 81, 82].includes(code)) return "icon-rain.webp";
+      if ([71, 73, 75, 77, 85, 86].includes(code)) return "icon-snow.webp";
+      if ([95, 96, 99].includes(code)) return "icon-storm.webp";
+      return "icon-partly-cloudy.webp";
+    }
+
+    // 4️⃣ Injection météo actuelle
+    town.textContent = `${name}, ${country}`;
+    date.textContent = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+    tempP.textContent = `${current.temperature_2m}°C`;
+    feelLike.textContent = `${current.apparent_temperature}°C`;
+    humidity.textContent = `${current.relative_humidity_2m}%`;
+    wind.textContent = `${current.wind_speed_10m} km/h`;
+    precipitation.textContent = `${current.precipitation} mm`;
+
+    // ✅ Icône principale avec animation fade
+    let img = temperatureDiv.querySelector('img');
+
+    if (!img) {
+      // si aucune image, on crée directement
+      img = document.createElement('img');
+      img.style.width = "120px";
+      img.style.height = "120px";
+      img.style.marginRight = "10px";
+      img.style.transition = "opacity 0.5s ease-in-out";
+      temperatureDiv.insertBefore(img, tempP);
+      img.src = `./assets/images/${getWeatherIcon(current.weathercode)}`;
+      img.alt = `Icône météo ${name}`;
+      img.style.opacity = 1;
+    } else {
+      // effet fade
+      img.classList.add('fade-out');
+      setTimeout(() => {
+        img.src = `./assets/images/${getWeatherIcon(current.weathercode)}`;
+        img.alt = `Icône météo ${name}`;
+        img.classList.remove('fade-out');
+      }, 500);
+    }
+
+    // 5️⃣ Mise à jour des 7 jours
+    const dayElements = document.querySelectorAll('.days .day');
+
+    weatherData.daily.time.forEach((dateStr, i) => {
+      if (!dayElements[i]) return; 
+      const dayEl = dayElements[i];
+      const min = weatherData.daily.temperature_2m_min[i];
+      const max = weatherData.daily.temperature_2m_max[i];
+      const code = weatherData.daily.weathercode[i];
+      const icon = getWeatherIcon(code);
+      const dayName = new Date(dateStr).toLocaleDateString('fr-FR', { weekday: 'short' });
+
+      // Nom du jour
+      const pDay = dayEl.querySelector('.tp-6');
+      if (pDay) pDay.textContent = dayName.charAt(0).toUpperCase() + dayName.slice(1);
+
+      // Icône : création dynamique si n'existe pas
+      let imgEl = dayEl.querySelector('img');
+      if (!imgEl) {
+        imgEl = document.createElement('img');
+        dayEl.insertBefore(imgEl, dayEl.querySelector('.min-max-temperatures'));
+      }
+      imgEl.src = `./assets/images/${icon}`;
+      imgEl.alt = `Météo ${dayName}`;
+
+      // Min/max
+      const maxEl = dayEl.querySelector('.max-temp');
+      const minEl = dayEl.querySelector('.min-temp');
+      if (maxEl) maxEl.textContent = `${max.toFixed(1)}°`;
+      if (minEl) minEl.textContent = `${min.toFixed(1)}°`;
+    });
 
   } catch (err) {
     console.error("Erreur :", err);
