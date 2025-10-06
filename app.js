@@ -1,3 +1,12 @@
+// Sélecteurs
+const unitsBtn = document.querySelector('.units');
+const unitsSelector = document.querySelector('.units-selector');
+
+// Toggle l'affichage
+unitsBtn.addEventListener('click', () => {
+  unitsSelector.classList.toggle('units-active');
+});
+
 document.getElementById('myForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -197,5 +206,5 @@ document.getElementById('myForm').addEventListener('submit', async (e) => {
       loader.remove();
       townNameEl.style.visibility = 'visible';
     }
-  }, 1000);
+  }, 200);
 });
