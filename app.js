@@ -255,7 +255,12 @@ document.getElementById("myForm").addEventListener("submit", async (e) => {
   errorSection.style.display = "none";
   noResultMsg.style.visibility = "hidden";
   retryWrapper.style.visibility = "hidden";
-  gridContent.style.display = "grid";
+  if (window.innerWidth <= 800) {
+    gridContent.style.display = "flex";
+    // Ton code ici
+  } else {
+    gridContent.style.display = "grid";
+  }
 
   const townDiv = document.querySelector(".town");
   const townNameEl = document.querySelector(".town-name");
