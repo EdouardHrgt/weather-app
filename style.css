@@ -167,6 +167,50 @@ h1 {
   cursor: pointer;
 }
 
+.units-temperature.active,
+.units-wind.active,
+.units-precipitation.active {
+  background-color: var(--neutral-600);
+}
+
+.units-temperature,
+.units-wind,
+.units-precipitation {
+  position: relative;
+  padding-right: 25px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #333;
+  font-size: 14px;
+  margin: 5px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.units-temperature.active::after,
+.units-wind.active::after,
+.units-precipitation.active::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 11px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='11' fill='none' viewBox='0 0 14 11'%3E%3Cpath fill='%23fff' d='M11.895 1.047c.136-.137.355-.137.464 0l.793.766c.11.136.11.355 0 .464L4.95 10.48a.315.315 0 0 1-.465 0L.82 6.844c-.11-.137-.11-.356 0-.465l.793-.793c.11-.11.328-.11.465 0l2.625 2.652 7.192-7.191Z'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: contain;
+}
+
+.units-temperature.active,
+.units-wind.active,
+.units-precipitation.active {
+  background-color: var(--neutral-600);
+  color: white;
+}
+
 h1 {
   text-align: center;
 }
@@ -212,23 +256,40 @@ input[type="submit"] {
   color: var(--neutral-0);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 32px;
-  justify-content: center;
-  align-items: stretch;
+/* ===== ERRORS SECTIONS===== */
+.errors {
+  text-align: center;
+  display: none;
 }
 
-.left-col {
-  width: 800px;
+.no-result {
+  visibility: hidden;
+}
+
+.retry-wrapper {
+  visibility: hidden;
+}
+
+.retry-wrapper p {
+  color: var(--neutral-200);
+  font-weight: 300;
+  margin: 0.5rem 0;
+}
+
+#retry {
+  background: var(--neutral-700);
+  border-radius: 12px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 15px;
+  max-height: 48px;
+  margin-inline: auto;
 }
 
-.right-col {
-  width: 384px;
+#retry p {
+  color: var(--neutral-0);
 }
 
 /* ===== UNITS DROPDOWN ===== */
@@ -253,13 +314,12 @@ input[type="submit"] {
   margin-bottom: 12px;
 }
 
-.units-selector >div {
+.units-selector > div {
   padding: 7px 0;
 }
 
 .units-wind-wrapper,
-.units-temperature-wrapper
- {
+.units-temperature-wrapper {
   border-bottom: 1px solid var(--neutral-600);
   margin-bottom: 12px;
 }
@@ -275,9 +335,8 @@ input[type="submit"] {
 }
 
 .units-precipitation-wrapper {
-    border-bottom: none;
-    margin-bottom: 0;
-    border: 0px solid red;
+  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .units-selector button {
@@ -292,6 +351,25 @@ input[type="submit"] {
 
 .units-selector button:focus {
   background-color: var(--neutral-700);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 32px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.left-col {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.right-col {
+  width: 384px;
 }
 
 /* ===== LEFT COLUMN ===== */
@@ -425,7 +503,7 @@ input[type="submit"] {
   margin-bottom: 16px;
 }
 
-.hourly>div {
+.hourly > div {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -538,6 +616,29 @@ input[type="submit"] {
 
   .day {
     width: 100%;
+  }
+
+  .units-selector {
+    width: 100%;
+  }
+
+  .units-selector > p {
+    margin-bottom: 20px;
+  }
+
+  .units-selector > div {
+    padding: 15px 0;
+  }
+
+  .units-wind-wrapper,
+  .units-temperature-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .units-wind-wrapper p,
+  .units-temperature-wrapper p,
+  .units-precipitation-wrapper p {
+    margin-bottom: 12px;
   }
 }
 
