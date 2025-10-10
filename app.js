@@ -329,12 +329,20 @@ document.getElementById("myForm").addEventListener("submit", async (e) => {
       let img = temperatureDiv.querySelector("img");
       if (!img) {
         img = document.createElement("img");
-        img.style.width = "120px";
-        img.style.height = "120px";
-        img.style.marginRight = "10px";
         img.style.transition = "opacity 0.5s ease-in-out";
+        img.style.marginRight = "10px";
         temperatureDiv.insertBefore(img, tempP);
       }
+
+      // Vérifie la taille de l’écran
+      if (window.innerWidth <= 800) {
+        img.style.width = "80px";
+        img.style.height = "80px";
+      } else {
+        img.style.width = "120px";
+        img.style.height = "120px";
+      }
+
       img.src = `./assets/images/${getWeatherIcon(
         weatherData.current.weathercode
       )}`;

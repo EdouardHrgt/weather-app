@@ -590,6 +590,7 @@ input[type="submit"] {
     background: url("./assets/images/bg-today-small.svg");
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 0;
   }
 
   .temp-txt {
